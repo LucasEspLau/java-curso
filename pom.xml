@@ -11,4 +11,5 @@
         <maven.compiler.target>17</maven.compiler.target>
         <exec.mainClass>com.proyecto.java.curso.JavaCurso</exec.mainClass>
     </properties>
+    <name>sesion2</name>
 </project>
