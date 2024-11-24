@@ -35,6 +35,8 @@ public class Formulario extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         cboOferta = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        txtSueldoBase = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -63,6 +65,8 @@ public class Formulario extends javax.swing.JFrame {
 
         jLabel3.setText("Aceptar oferta laboral:");
 
+        jLabel4.setText("Sueldo base:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -72,21 +76,27 @@ public class Formulario extends javax.swing.JFrame {
                 .addComponent(jScrollPane1)
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnMostrar)
+                .addGap(216, 216, 216))
+            .addGroup(layout.createSequentialGroup()
                 .addGap(63, 63, 63)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 171, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 298, Short.MAX_VALUE))
+                        .addGap(18, 18, 18))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(cboOferta, 0, 117, Short.MAX_VALUE)
                     .addComponent(txtEdad, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtMsj, javax.swing.GroupLayout.Alignment.LEADING))
+                    .addComponent(txtMsj, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtSueldoBase))
                 .addGap(31, 31, 31))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnMostrar)
-                .addGap(158, 158, 158))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -96,18 +106,22 @@ public class Formulario extends javax.swing.JFrame {
                     .addComponent(txtEdad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(txtMsj, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtMsj, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cboOferta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
-                .addGap(13, 13, 13)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(txtSueldoBase, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
                 .addComponent(btnMostrar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(27, 27, 27)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addGap(36, 36, 36))
         );
 
         pack();
@@ -120,6 +134,7 @@ public class Formulario extends javax.swing.JFrame {
     private void btnMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarActionPerformed
        
         int edad=Integer.parseInt(txtEdad.getText());
+        double sueldoBase=Double.parseDouble(txtSueldoBase.getText());
         String msj=txtMsj.getText();
         
         int indexComboBox=cboOferta.getSelectedIndex();
@@ -132,13 +147,19 @@ public class Formulario extends javax.swing.JFrame {
         }
         
         switch(msj){
-            case "Hola": txtARes.append("Hola como estas");break;
-            default: txtARes.append("Mi msj fue: "+msj);break;
+            case "Hola": txtARes.append("Hola como estas\n");break;
+            default: txtARes.append("Mi msj fue: "+msj+"\n");break;
         }
         
+        double sueldoReal=MetodosUtil.calcularSueldo(sueldoBase);
+        
+        txtARes.append("Tu sueldo es: "+sueldoReal);
         
     }//GEN-LAST:event_btnMostrarActionPerformed
 
+    
+    
+    
     /**
      * @param args the command line arguments
      */
@@ -180,9 +201,11 @@ public class Formulario extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea txtARes;
     private javax.swing.JTextField txtEdad;
     private javax.swing.JTextField txtMsj;
+    private javax.swing.JTextField txtSueldoBase;
     // End of variables declaration//GEN-END:variables
 }
